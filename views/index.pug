@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Assignment 10: Corben McClintock
+
+  button(onClick="double()" class="btn btn-primary") I am a button
+
+  div(id='double') Up the amount.
+
+  script.
+    var value = 0;
+    var power = 1;
+    function double () {
+      value++;
+      power = power * 2;
+      document.getElementById("double").innerHTML = `Two to the power ${value} is ${power}.` 
+    }
+  a(href="parent") Link to parent   

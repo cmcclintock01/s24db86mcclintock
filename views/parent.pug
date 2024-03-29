@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [ {parent_type: 'Father', age: 52, since: 2001}, {parent_type: 'Mother', age: 51, since:2005}, {parent_type: 'Father', age: 22, since: 2022} ]
+
+  div(class="container-fluid")
+    div(class="row")
+      each item of results
+        div(class="col-sm-2") This parent is a #{item.parent_type} and is #{item.age} years old. They have been a parent since #{item.since}.
+
+
+      
