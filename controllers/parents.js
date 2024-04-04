@@ -27,6 +27,32 @@ exports.parent_list = async function(req, res) {
     }
     catch(err){
         res.status(500);
-        res.send({"error": ${err}});
+        res.send(`{"error": ${err}}`);
+    }
+};
+
+exports.parent_view_all_Page = async function (req, res) {
+    try{
+        theParents = await Parent.find();
+        res.render('parents', { title:'Parent Search Results', results: theParents});
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error":${err}}`);
+    }
+};
+
+exports.parent_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new Parent();
+    document.parent_type = req.body.costume_type;
+    document.size = req.body.size;
+    try {
+        let result = await document.save();
+        res.send(result);
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error": ${err}}`);
     }
 };
