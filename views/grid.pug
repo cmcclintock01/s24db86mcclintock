@@ -2,4 +2,35 @@ extends layout
 
 block content
   h1= title
-  
+  p There are #{query.rows} rows and #{query.cols} columns.
+  - var rows= Number(query.rows)
+  - var col= Number(query.cols)
+  if !Number.isInteger(rows)
+    p Not an integer 
+  else if !Number.isInteger(col)
+    p Not an integer
+  else if rows<3
+    p Rows out of range
+  else if rows>13 
+    p Rows out of range
+  else if col<3
+    p Columns out of range
+  else if col>13 
+    p Columns out of range
+  else
+    table#outer
+      - for(let i=0; i<rows;i++) {
+        tr#middle
+        - for(let j=0; j<col;j++) {
+          td= checkValue(i,j)
+        - };
+      - };
+
+  - function checkValue(i, j) {
+    - let highestVal = Math.max(i,j);
+    - for(let x=0; x<highestVal+1; x++){
+      - if(i == x || j == x){
+        - return x + 1;
+      - };
+    - };
+  - };     

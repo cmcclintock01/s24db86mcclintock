@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  - var image_names = ['parent1', 'parent2', 'parent3', 'parent4', 'parent5'];
+  -for(let i=0;i<3;i++){
+    img(src=`/images/${image_names[Math.floor(Math.random()*5)]}.jpg` alt="Cannot find image" height=300 widght=300)
+  - }
