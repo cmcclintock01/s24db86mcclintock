@@ -52,7 +52,6 @@ var parentRouter = require('./routes/parent');
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
 var resourceRouter = require('./routes/resource');
-var parentsRouter = require('./controllers/parents');
 var app = express();
 
 // view engine setup
@@ -71,7 +70,6 @@ app.use('/parent', parentRouter);
 app.use('/grid', gridRouter);
 app.use('/pick', pickRouter);
 app.use('/resource', resourceRouter);
-app.use('/parents', parentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
