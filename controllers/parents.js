@@ -5,14 +5,14 @@ exports.parent_list = function(req, res) {
 };
 
 exports.parent_detail = async function(req, res){
-    console.log("detail" +req.params.id)
+    console.log("detail" +req.params.id);
     try {
-        result = await Parent.findById(req.params.id)
-        res.send(result)
-    } catch (
-        res.status(500)
+        result = await Parent.findById(req.params.id);
+        res.send(result);
+    } catch(error) {
+        res.status(500);
         res.send(`{"error": document for id ${req.params.id} not found}`);
-    )
+    }
 };
 
 exports.parent_create_post = async function(req, res) {
