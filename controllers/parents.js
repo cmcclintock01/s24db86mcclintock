@@ -31,8 +31,16 @@ exports.parent_create_post = async function(req, res) {
     }
 };
 
-exports.parent_delete = function(req, res) {
-    res.send("NOT IMPLEMENTED: Parent delete DELETE " + req.params.id);
+exports.parent_delete = async function(req, res) {
+    console.log("delete" + req.params.id)
+    try {
+        result = await Parent.findByIdAndDelete(req.params.id)
+        console.log("Removed" + result)
+        res.send(result)
+    } catch(err){
+        res.status(500)
+        res.send(`{"error:" Error deleteing ${err}}`);
+    }
 };
 
 exports.parent_update_put = async function(req, res) {
