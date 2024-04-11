@@ -1,0 +1,43 @@
+extends layout
+
+block content 
+  h1= title 
+  - let parentid = toShow._id
+  - let parent_type = toShow.parent_type 
+  - let parentage = toShow.age 
+  - let parentsince = toShow.since 
+
+  div.row(class='mb2')
+    div.mr-1 ID is 
+    div #{parentid}
+    - let actionid = "/resource/parents/" + parentid
+  
+  form(id='ParentForm', action= actionid, method='PUT')
+    div.form-group
+      label.parentAttr(for='parent_type') Parent type 
+      input#parent_type(type='text', name='parent_type', value= parent_type)
+    div.form-group
+      label.parentAttr(for='age') Parent Age 
+      input#age(type='number', name='age', value= parentage)
+    div.form-group
+      label.parentAttr(for='since') Parent Since 
+      input#since(type='number', name='since', value= parentsince)
+    input(type='submit')
+
+  script.
+    document.forms['CostumeForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+      // TODO handle body
+      }).catch((error) => {
+      // TODO handle error
+        alert("Save failed " + error )
+      });
+    });
