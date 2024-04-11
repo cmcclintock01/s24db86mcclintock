@@ -1,0 +1,21 @@
+extends layout 
+block content
+  h1= title 
+  
+  - let parentid = toShow._id
+  - let parent_type = toShow.parent_type 
+  - let parentage = toShow.age 
+  - let parentsince = toShow.since 
+  div 
+    div.row
+      div(class='parentAttr mr-3') Parent ID is: 
+      div #{parentid}
+    div.row
+      div(class='parentAttr mr-3') Parent Type is: 
+      div #{parent_type}
+    div.row
+      div(class='parentAttr mr-3') Parent Age is: 
+      div #{parentage}
+    div.row
+      div(class='parentAttr mr-3') Parent Since: 
+      div #{parentsince}

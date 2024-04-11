@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.parentAttr {
+  background-color: tan;
+  width: 120px;
+}
