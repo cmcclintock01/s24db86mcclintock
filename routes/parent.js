@@ -10,7 +10,8 @@ router.get('/detail', parent_controllers.parent_view_one_Page);
 router.get('/create', parent_controllers.parent_create_Page);
 /*Get create update page*/
 router.get('/update', parent_controllers.parent_update_Page);
-
+/*Get delete parent page*/
+router.get('/delete', parent_controllers.parent_delete_Page);
 
 
 

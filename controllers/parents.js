@@ -106,7 +106,7 @@ exports.parent_create_Page = function(req, res) {
 };
 
 exports.parent_update_Page = async function(req, res) {
-    console.log("update view for item" + req.query.id)
+    console.log("update view for item " + req.query.id)
     try {
         let result = await Parent.findById(req.query.id)
         res.render('parentupdate', {title: 'Parent Update', toShow: result});
@@ -115,3 +115,14 @@ exports.parent_update_Page = async function(req, res) {
         res.send(`{"error": ${error}}`);
     }
 };
+
+exports.parent_delete_Page = async function(req, res) {
+    console.log("delete view for id " + req.query.id)
+    try {
+        result = await Parent.findById(req.query.id)
+        res.render('parentdelete', {title: 'Costume Delete', toShow: result});
+    } catch(err){
+        res.status(500)
+        res.send(`{'error': ${err}}`);
+    }
+}
