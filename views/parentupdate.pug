@@ -25,7 +25,7 @@ block content
     input(type='submit')
 
   script.
-    document.forms['CostumeForm'].addEventListener('submit', (event) => {
+    document.forms['ParentForm'].addEventListener('submit', (event) => {
       event.preventDefault();
       // TODO do something here to show user that form is being submitted
       fetch(event.target.action, {

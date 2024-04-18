@@ -12,7 +12,7 @@ router.post('/parents', parent_controller.parent_create_post);
 router.delete('/parents/:id', parent_controller.parent_delete);
 // PUT request to update Paremt.
 router.put('/parents/:id', parent_controller.parent_update_put);
-// GET request for one Costume.
+// GET request for one Parent.
 router.get('/parents/:id', parent_controller.parent_detail);
 // GET request for list of all Parent items.
 router.get('/parents', parent_controller.parent_list);

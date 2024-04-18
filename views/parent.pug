@@ -5,9 +5,16 @@ block content
   - let items = results;
 
   div(class="container-fluid")
-    div(class="row")
-      each item of results
+    div(class="row m-1")
+      each item in items
+        - let destination = `dispatch(\"/parent/update?id=${item.id}\")`
         div(class="col-sm-2") This parent is a #{item.parent_type} and is #{item.age} years old. They have been a parent since #{item.since}.
+          button.btn(class = "btn-primary ml-1", onclick=destination) Update
+  
+  script.
+    function dispatch(path){
+      window.location.href=path
+    }
 
 
       

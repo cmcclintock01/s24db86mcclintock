@@ -1,7 +1,14 @@
 var Parent = require('../models/parent');
 
-exports.parent_list = function(req, res) {
-    res.send("NOT IMPLEMENTED: Parent list");
+exports.parent_list = async function(req, res) {
+    try {
+        theParents = await Parent.find();
+        res.send(theCostumes);
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
 };
 
 exports.parent_detail = async function(req, res){
@@ -44,7 +51,7 @@ exports.parent_delete = async function(req, res) {
 };
 
 exports.parent_update_put = async function(req, res) {
-    console.log(`update on id ${req.params.id} with body ${JSON.stringify.req.body}`);
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
     try {
         let toUpdate = await Parent.findById(req.params.id);
         if(req.body.parent_type)
@@ -52,7 +59,7 @@ exports.parent_update_put = async function(req, res) {
         if(req.body.age) toUpdate.age = req.body.age;
         if(req.body.since) toUpdate.since = req.body.since;
         let result = await toUpdate.save();
-        console.log("Success" +result);
+        console.log("Success" + result);
         res.send(result)
     } catch (err) {
         res.status(500)
@@ -112,15 +119,15 @@ exports.parent_update_Page = async function(req, res) {
         res.render('parentupdate', {title: 'Parent Update', toShow: result});
     } catch(err){
         res.status(500)
-        res.send(`{"error": ${error}}`);
+        res.send(`{"error": ${err}}`);
     }
 };
 
 exports.parent_delete_Page = async function(req, res) {
     console.log("delete view for id " + req.query.id)
     try {
-        result = await Parent.findById(req.query.id)
-        res.render('parentdelete', {title: 'Costume Delete', toShow: result});
+        let result = await Parent.findById(req.query.id)
+        res.render('parentdelete', {title: 'Parent Delete', toShow: result});
     } catch(err){
         res.status(500)
         res.send(`{'error': ${err}}`);
