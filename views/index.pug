@@ -1,19 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Assignment 10: Corben McClintock
-
-  button(onClick="double()" class="btn btn-primary") I am a button
-
-  div(id='double') Up the amount.
-
-  script.
-    var value = 0;
-    var power = 1;
-    function double () {
-      value++;
-      power = power * 2;
-      document.getElementById("double").innerHTML = `Two to the power ${value} is ${power}.` 
-    }
-  a(href="parent") Link to parent   
+  if (!user)
+    a(href='/login') Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/parents") Take me to parents
+    br
+    a(href="/logout") Logout
