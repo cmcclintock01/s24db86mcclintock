@@ -3,13 +3,15 @@ extends layout
 block content
   h1= title
   - let items = results;
-
+  button.btn(class = "btn-primary ml-1", onclick=`dispatch(\"parent/create\")`) Go to Create
   div(class="container-fluid")
     div(class="row m-1")
       each item in items
         - let destination = `dispatch(\"/parent/update?id=${item.id}\")`
         div(class="col-sm-2") This parent is a #{item.parent_type} and is #{item.age} years old. They have been a parent since #{item.since}.
           button.btn(class = "btn-primary ml-1", onclick=destination) Update
+          button.btn(class = 'btn-primary ml-1', onclick=`dispatch(\"parent/detail?id=${item.id}\")`) Details Page
+          button.btn(class = 'btn-primary ml-1', onclick=`dispatch(\"parent/delete?id=${item.id}\")`) Delete
   
   script.
     function dispatch(path){

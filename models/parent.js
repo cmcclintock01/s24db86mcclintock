@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const parentSchema = mongoose.Schema( {
     parent_type: String,
-    age: Number,
+    age: {type: Number, min: 12, max: 120},
     since: Number,
 })
 
